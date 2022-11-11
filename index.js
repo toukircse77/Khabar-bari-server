@@ -103,7 +103,12 @@ async function run() {
             console.log(result)
             res.send(result);
         })
-      
+        app.get('/serviceDetails/:id', async (req, res) => {
+            const id = req.params.id;
+            const quary = { _id: ObjectId(id) };
+            const serviceDatails = await userCollectin.findOne(quary)
+            res.send(serviceDatails);
+        })
     }
     finally {
 
