@@ -97,6 +97,13 @@ async function run() {
             const services = await cursor.toArray();
             res.send(services)
         })
+
+        app.post('/services', async (req, res) => {
+            const newservices = req.body;
+            const result = await userCollectin.insertOne(newservices);
+            console.log(result)
+            res.send(result);
+        })
         
         app.get('/serviceDetails/:id', async (req, res) => {
             const id = req.params.id;
