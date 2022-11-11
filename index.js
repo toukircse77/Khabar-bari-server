@@ -57,14 +57,7 @@ async function run() {
             res.send(result);
         })
 
-        app.delete('/all-reviews/:id', async (req, res) => {
-            const id = req.params.id;
-            // console.log(id)
-            const query = { _id: ObjectId(id) };
-            const userDelete = await allReviewsCollectin.deleteOne(query);
-            res.send(userDelete);
-
-        })
+        
         app.put('/all-reviews/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: ObjectId(id) };
