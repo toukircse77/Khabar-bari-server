@@ -6,9 +6,7 @@ app.use(cors());
 require('dotenv').config()
 const port = process.env.PORT || 5000;
 app.use(express.json());
-
-// user name :testing    template
-// password: 8qBW5oij5zTVMjQc  sample  
+ 
 
 
 
@@ -18,8 +16,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         const userCollectin = client.db("foods").collection("items");
-        // const reviewsCollectin = client.db("foods").collection("reviews");
-        // const allReviewCollection = client.db("allrevie").collection("reviews");
         const allReviewsCollectin = client.db("foods").collection("reviewses");
         app.post('/AllReview', async (req, res) =>{
             const review = req.body; 
@@ -107,12 +103,7 @@ async function run() {
             console.log(result)
             res.send(result);
         })
-        app.get('/serviceDetails/:id', async (req, res) => {
-            const id = req.params.id;
-            const quary = { _id: ObjectId(id) };
-            const serviceDatails = await userCollectin.findOne(quary)
-            res.send(serviceDatails);
-        })
+      
     }
     finally {
 
