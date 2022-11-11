@@ -65,25 +65,7 @@ async function run() {
             res.send(userDelete);
 
         })
-        app.put('/all-reviews/:id', async (req, res) => {
-            const id = req.params.id;
-            const filter = { _id: ObjectId(id) };
-            const user = req.body;
-            const option = { upsert: true };
-            const updateUser = {
-                $set: {
-                    customer: user?.customer,
-                    message: user?.message,
-                    email: user?.email,
-                    serviceName: user?.serviceName,
-                    reting: user?.reting,
-
-                }
-            }
-            const result = await allReviewsCollectin.updateOne(filter, updateUser, option);
-            res.send(result);
-
-        })
+        
 
         app.get('/items', async (req, res) => {
             const quary = {};
